@@ -26,6 +26,7 @@ int main() {
     char temp_word[300];
     char word_max_ones[300];
     int counter = 0;
+    int max_counter = 0;
     int temp_ones = 0;
     int num = 1;
     int pre_fin_num = -1;
@@ -38,12 +39,14 @@ int main() {
                 max_ones = temp_ones;
                 fin_num = num - 1;
                 for (int j = 0; j < counter + 1; j++) word_max_ones[j] = temp_word[j];
+                max_counter = counter;
             }
             if (temp_ones == max_ones and temp_ones != 0 and is_digit){
                 max_ones = temp_ones;
                 pre_fin_num = fin_num;
                 fin_num = num - 1;
                 for (int j = 0; j < counter + 1; j++) word_max_ones[j] = temp_word[j];
+                max_counter = counter;
             }
             is_digit = true;
             temp_ones = 0;
@@ -65,12 +68,14 @@ int main() {
         max_ones = temp_ones;
         fin_num = num - 1;
         for (int j = 0; j < counter + 1; j++) word_max_ones[j] = temp_word[j];
+        max_counter = counter;
     }
     if (temp_ones == max_ones and temp_ones != 0 and is_digit){
         max_ones = temp_ones;
         pre_fin_num = fin_num;
         fin_num = num - 1;
         for (int j = 0; j < counter + 1; j++) word_max_ones[j] = temp_word[j];
+        max_counter = counter;
     }
     if (pre_fin_num == -1){
         pre_fin_num = fin_num;
@@ -79,6 +84,6 @@ int main() {
         cout << "No numbers with ones";
     } else {
         cout << "Word #" << pre_fin_num << "\n";
-        for (int i = 0; i < counter + 1; i++) cout << word_max_ones[i];
+        for (int i = 0; i < max_counter + 1; i++) cout << word_max_ones[i];
     }
 }
